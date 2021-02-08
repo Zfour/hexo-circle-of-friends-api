@@ -51,10 +51,10 @@ def getdata():
 
 
     datalist_user =[]
-    for i in query_list:
+    for j in  query_list_user:
         itemlist=[]
         for item in list_user:
-            itemlist.append(i.get(item))
+            itemlist.append(j.get(item))
         datalist_user.append(itemlist)
     total_data = []
     total_data.append(datalist_user)
