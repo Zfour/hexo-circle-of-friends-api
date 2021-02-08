@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler
 import json
 
 def getdata():
-    list = ['title','time','link','author','headimg']
+    list = ['title','time','link','author','headimg','createdAt']
     # Verify key
     leancloud.init("VXE6IygSoL7c2wUNmSRpOtcz-MdYXbMMI", "8nLVKfvoCtAEIKK8mD2J2ki7")
 
