@@ -57,7 +57,8 @@ def getdata():
             itemlist.append(i.get(item))
         datalist_user.append(itemlist)
     total_data = []
-    total_data.append(datalist_user,datalist)
+    total_data.append(datalist_user)
+    total_data.append(datalist)
     return total_data
     # Api handler
 class handler(BaseHTTPRequestHandler):
