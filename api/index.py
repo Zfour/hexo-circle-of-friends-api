@@ -7,9 +7,10 @@
 import leancloud
 from http.server import BaseHTTPRequestHandler
 import json
+import datetime
 
 def getdata():
-    list = ['title','time','link','author','headimg','createdAt']
+    list = ['title','time','link','author','headimg']
     # Verify key
     leancloud.init("VXE6IygSoL7c2wUNmSRpOtcz-MdYXbMMI", "8nLVKfvoCtAEIKK8mD2J2ki7")
 
@@ -38,6 +39,8 @@ def getdata():
         for item in list:
             itemlist.append(i.get(item))
         datalist.append(itemlist)
+        update_time = i.get('createdAt')
+        datalist.append(update_time.strftime('%Y-%m-%d %H:%M:%S'))
     return datalist
 
     # Api handler
