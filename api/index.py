@@ -37,7 +37,8 @@ def getdata():
     query_userinfo = Friendlist.query
     query_userinfo.limit(1000)
     query_userinfo.select('frindname','friendlink','firendimg','error')
-    query_list_user = query.find()
+    query_list_user = query_userinfo.find()
+
 
     # Result to arr
     datalist=[]
@@ -52,10 +53,11 @@ def getdata():
 
     datalist_user =[]
     for j in  query_list_user:
-        itemlist=[]
-        for item in list_user:
-            itemlist.append(j.get(item))
-        datalist_user.append(itemlist)
+        itemlist_user=[]
+        for item2 in list_user:
+
+            itemlist_user.append(j.get(item2))
+        datalist_user.append(itemlist_user)
     total_data = []
     total_data.append(datalist_user)
     total_data.append(datalist)
@@ -70,3 +72,4 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(data).encode('utf-8'))
         return
+print(getdata())
