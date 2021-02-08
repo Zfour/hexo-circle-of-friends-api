@@ -38,9 +38,9 @@ def getdata():
         itemlist=[]
         for item in list:
             itemlist.append(i.get(item))
-        datalist.append(itemlist)
         update_time = i.get('createdAt')
-        datalist.append(update_time.strftime('%Y-%m-%d %H:%M:%S'))
+        itemlist.append(update_time.strftime('%Y-%m-%d %H:%M:%S'))
+        datalist.append(itemlist)
     return datalist
 
     # Api handler
