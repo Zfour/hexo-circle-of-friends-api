@@ -11,6 +11,7 @@ import datetime
 
 def getdata():
     list = ['title','time','link','author','headimg']
+    list_user = ['frindname','friendlink','firendimg','error']
     # Verify key
     leancloud.init("VXE6IygSoL7c2wUNmSRpOtcz-MdYXbMMI", "8nLVKfvoCtAEIKK8mD2J2ki7")
 
@@ -32,6 +33,12 @@ def getdata():
     # Execute the query, returning result
     query_list = query.find()
 
+    Friendlist = leancloud.Object.extend('friend_list')
+    query_userinfo = Friendlist.query
+    query_userinfo.limit(1000)
+    query_userinfo.select('frindname','friendlink','firendimg','error')
+    query_list_user = query.find()
+
     # Result to arr
     datalist=[]
     for i in query_list:
@@ -41,8 +48,17 @@ def getdata():
         update_time = i.get('createdAt')
         itemlist.append(update_time.strftime('%Y-%m-%d %H:%M:%S'))
         datalist.append(itemlist)
-    return datalist
 
+
+    datalist_user =[]
+    for i in query_list:
+        itemlist=[]
+        for item in list_user:
+            itemlist.append(i.get(item))
+        datalist_user.append(itemlist)
+    total_data = []
+    total_data.append(datalist_user,datalist)
+    return total_data
     # Api handler
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
