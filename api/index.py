@@ -8,12 +8,13 @@ import leancloud
 from http.server import BaseHTTPRequestHandler
 import json
 import datetime
+import os
 
 def getdata():
     list = ['title','time','link','author','headimg']
     list_user = ['frindname','friendlink','firendimg','error']
     # Verify key
-    leancloud.init("VXE6IygSoL7c2wUNmSRpOtcz-MdYXbMMI", "8nLVKfvoCtAEIKK8mD2J2ki7")
+    leancloud.init(os.environ.get('AppKey'),os.environ.get('AppID'))
 
     # Declare class
     Friendspoor = leancloud.Object.extend('friend_poor')
