@@ -13,8 +13,13 @@ import os
 def getdata():
     list = ['title','time','link','author','headimg']
     list_user = ['frindname','friendlink','firendimg','error']
+
+    id =  os.getenv('AppID')
+    key = os.getenv('AppKey')
+
+
     # Verify key
-    leancloud.init(os.environ.get('AppKey'),os.environ.get('AppID'))
+    leancloud.init(key,id)
 
     # Declare class
     Friendspoor = leancloud.Object.extend('friend_poor')
