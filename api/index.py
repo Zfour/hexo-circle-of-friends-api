@@ -8,12 +8,13 @@ import leancloud
 from http.server import BaseHTTPRequestHandler
 import json
 import datetime
+import os
 
 def getdata():
     list = ['title','time','link','author','headimg']
     list_user = ['frindname','friendlink','firendimg','error']
     # Verify key
-    leancloud.init("VXE6IygSoL7c2wUNmSRpOtcz-MdYXbMMI", "8nLVKfvoCtAEIKK8mD2J2ki7")
+    leancloud.init(os.environ["LEANCLOUD_ID"], os.environ["LEANCLOUD_KEY"])
 
     # Declare class
     Friendspoor = leancloud.Object.extend('friend_poor')
@@ -71,5 +72,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         self.wfile.write(json.dumps(data).encode('utf-8'))
-        return 
+        return
 print(getdata())
